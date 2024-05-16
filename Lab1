@@ -1,0 +1,122 @@
+#include<stdio.h>
+
+void read_matrix(int cost[10][10],int n) {
+
+int i,j;
+
+for(i=1;i<=n;i++)
+
+for(j=1;j<=n;j++)
+
+{
+
+}
+
+scanf("%d",&cost[i][j]);
+
+}
+
+int find(int v, int parent [10])
+
+{
+
+while(parent[v]!=v)
+
+v=parent[v];
+
+return v;
+
+}
+
+void union_ij(int i,int j,int parent[10])
+
+{
+
+if(i<j)
+
+parent[j]=i;
+
+}
+
+void kruskal(int n, int cost[10] [10], int parent[10], int span [10] [10])
+
+{
+
+int i,j,u,v,res1, res2, mincost;
+
+int count=0, sum=0;
+
+printf("\n Edges of spanning tree are\n"); while(count!=n-1)
+
+{
+
+mincost=999;
+
+for(i=1;i<=n;i++)
+
+{ for(j=1;j<=n;j++)
+{ if(i! = j)
+
+{ if(cost[i][j]<mincost)
+
+{ u=find(i,parent);
+
+v = find(j,parent);
+
+if(u! = v)
+
+{
+
+res1=i;
+
+res2=j;
+
+mincost=cost[i][j];
+
+}
+
+}
+
+}
+
+}
+
+}
+
+count++;
+
+sum+=mincost;
+
+union_ij (res1, find (res2, parent), parent);
+
+span[i][1]=res1;
+
+span[i][2]=res2;
+
+printf("(%d,%d)\n", span [i][1],span[i][2]);
+
+}
+
+printf("\nCost of spanning tree is: \% d ln" , sum);
+
+}
+
+void main()
+
+{
+
+int i,n, cost[10] [10], sourse, parent[10], span [10] [10]; printf("Enter the number of nodes: \n");
+
+scanf("%d",&n);
+
+printf("Enter the cost matrix: ( n ^ prime prime ) ;
+
+read_matrix(cost,n);
+
+for(i =1; i <= n ;i+ )
+
+parent[ i ]=i
+
+kruskal (n, cost, parent, span);
+
+}
